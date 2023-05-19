@@ -5,6 +5,12 @@ terraform {
       version = "~> 3.0.2"
     }
   }
+  cloud {
+    organization = "fredrkl"
+    workspaces {
+      name = "learn-terraform-azure"
+    }
+  }
   required_version = ">= 1.1.0"
 }
 
@@ -18,7 +24,7 @@ resource "azurerm_resource_group" "rg" {
 
   tags = {
     Environment = "Terraform Demo"
-    Team = "DevOps"
+    Team        = "DevOps"
   }
 }
 
