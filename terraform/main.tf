@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.0.2"
     }
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
   }
   cloud {
     organization = "fredrkl"
@@ -14,8 +18,18 @@ terraform {
   required_version = ">= 1.1.0"
 }
 
+provider "github" {
+  app_auth {}
+}
+
 provider "azurerm" {
   features {}
+}
+
+resource "github_repository" "repo" {
+  name        = "tf-made-repo"
+  description = "This repo is made from Terraform"
+  visibility  = "public"
 }
 
 resource "azurerm_resource_group" "rg" {
