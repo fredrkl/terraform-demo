@@ -26,11 +26,28 @@ provider "azurerm" {
   features {}
 }
 
-resource "github_repository" "repo" {
-  name        = "tf-made-repo"
-  description = "This repo is made from Terraform"
-  visibility  = "public"
+module "gitrepo" {
+
+  providers = {
+    github = github
+  }
+
+  source = "./modules/git-repo"
+  git_repo_name = "first-terraform-repo"
+  git_repo_description = "This is my first terraform repo"
 }
+
+module "gitrepo-second" {
+
+  providers = {
+    github = "github"
+  }
+  
+  source = "./modules/git-repo"
+  git_repo_name = "second-terraform-repo"
+  git_repo_description = "This is my second terraform repo"
+}
+
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
