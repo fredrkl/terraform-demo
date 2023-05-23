@@ -1,9 +1,7 @@
-variable "git_repo_name" {
-    description = "value of the git repo name"
-    type = string
-}
-
-variable "git_repo_description" {
-    description = "Git repo description"
-    type = string
+variable "repo" {
+  description = "Configuration of github repo"
+  type = object({
+    name = string
+    description = string
+  })
 }

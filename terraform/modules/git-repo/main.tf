@@ -8,8 +8,8 @@ terraform {
 }
 
 resource "github_repository" "repo" {
-  name        = var.git_repo_name
-  description = var.git_repo_description
+  name        = var.repo.name
+  description = var.repo.description
   visibility  = "public"
   has_wiki = false
 

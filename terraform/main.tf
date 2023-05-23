@@ -33,19 +33,25 @@ module "gitrepo" {
   }
 
   source = "./modules/git-repo"
-  git_repo_name = "first-terraform-repo"
-  git_repo_description = "This is my first terraform repo"
+
+  repo = {
+    name = "first-terraform-repo"
+    description = "This is my first terraform repo"
+  }
 }
 
 module "gitrepo-second" {
 
   providers = {
-    github = "github"
+    github = github
   }
   
   source = "./modules/git-repo"
-  git_repo_name = "second-terraform-repo"
-  git_repo_description = "This is my second terraform repo"
+
+  repo = {
+    name = "second-terraform-repo"
+    description = "This is my second terraform repo"
+  }
 }
 
 
