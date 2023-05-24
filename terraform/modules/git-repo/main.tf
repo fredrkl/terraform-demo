@@ -13,6 +13,8 @@ resource "github_repository" "repo" {
   visibility  = "public"
   has_wiki = false
 
+  has_discussions = false
+
   template {
     owner = "fredrkl"
     repository = "template-demo"
