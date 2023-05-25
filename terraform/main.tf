@@ -34,26 +34,13 @@ module "gitrepo" {
 
   source = "./modules/git-repo"
 
-  repo = {
-    name = "first-terraform-repo"
-    description = "This is my first terraform repo"
-  }
-}
-
-module "gitrepo-second" {
-
-  providers = {
-    github = github
-  }
-  
-  source = "./modules/git-repo"
+  for_each = var.repos
 
   repo = {
-    name = "second-terraform-repo"
-    description = "This is my second terraform repo"
+    name = each.value.name
+    description = each.value.description
   }
 }
-
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name

@@ -34,3 +34,22 @@ variable "ARM_SUBSCRIPTION_ID" {
 variable "ARM_CLIENT_SECRET" {
   type = string
 }
+
+variable "repos" {
+  description = "List of repos"
+  type = map(object({
+    name = string
+    description = string
+  }))
+
+  default = {
+    first-terraform-repo = {
+      name = "first-terraform-repo"
+      description = "This is my first terraform repo"
+    }
+    second-terraform-repo = {
+      name = "second-terraform-repo"
+      description = "This is my second terraform repo"
+    }
+  }
+}
