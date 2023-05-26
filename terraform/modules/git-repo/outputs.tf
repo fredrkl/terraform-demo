@@ -1,3 +1,3 @@
-output "has-wiki" {
-    value = github_repository.repo.has_wiki
+output "repo_url" {
+    value = github_repository.repo.html_url
 }
